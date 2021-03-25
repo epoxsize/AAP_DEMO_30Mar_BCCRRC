@@ -5,4 +5,4 @@
 - name: Setting up DNS client to work with our local DC
   win_dns_client:
     adapter_names: "{{basic_adapter_name}}"
-    ipv4_addresses: "{{basic_dns_address}}"
+    ipv4_addresses: "{{ basic_dns_address }}"
