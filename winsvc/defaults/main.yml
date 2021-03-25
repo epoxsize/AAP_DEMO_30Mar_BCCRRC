@@ -3,11 +3,11 @@
 
 # Setting up default conditionals for including tasks
 
-var_prep_basic: true
-var_ad_add: true
-var_firewall_add: true
-var_chocolatey_add: true
-var_msi_add: true
+var_prep_basic: false
+var_ad_add: false
+var_firewall_add: false
+var_chocolatey_add: false
+var_msi_add: false
 
 # Defaults for basic tasks
 
