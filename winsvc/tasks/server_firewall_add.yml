@@ -5,5 +5,5 @@
     action: "{{firewall_action}}"
     direction: "{{firewall_direction}}"
     protocol: "{{firewall_protocol}}"
-    state: present
+    state: "{{firewall_state}}"
     enabled: yes
