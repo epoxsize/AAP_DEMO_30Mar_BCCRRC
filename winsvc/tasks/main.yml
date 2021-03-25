@@ -6,20 +6,20 @@
 
 - name:  Importing tasks for basic preparation of windows hosts
   import_tasks: server_prep_basic.yml
-  when: var_prep_basic == true
+  when: var_prep_basic is defined
 
 - name:  Importing DC domain member tasks
   import_tasks: server_ad_add.yml
-  when: var_ad_add == true
+  when: var_ad_add is defined
 
 - name:  Importing tasks for setting up firewall rules
   import_tasks: server_firewall_add.yml
-  when: var_firewall_add == true
+  when: var_firewall_add is defined
 
 - name:  Importing taks for setting up software with using chocolatey
   import_tasks: server_chocolatey_add.yml
-  when: var_chocolatey_add == true
+  when: var_chocolatey_add is defined
 
 - name:  Importing taks for setting up software with using standard functions
   import_tasks: server_msi_add.yml
-  when: var_msi_add == true
+  when: var_msi_add is defined
