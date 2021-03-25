@@ -1,0 +1,38 @@
+---
+# defaults file for winsvc
+
+# Setting up default conditionals for including tasks
+
+var_prep_basic: true
+var_ad_add: true
+var_firewall_add: true
+var_chocolatey_add: true
+var_msi_add: true
+
+# Defaults for basic tasks
+
+basic_adapter_name: 'Ethernet'
+basic_dns_address: '172.17.197.6'
+
+# Defaults for domain tasks
+
+domain_dns_name: 'edu.inno.lab'
+domain_ad_user: 'Administrator'
+domain_ad_password: 'P@ssw0rd'
+
+# Defaults for firewall tasks
+
+firewall_rule_name: default_company_rule
+firewall_port: 3128
+firewall_action: allow
+firewall_direction: in
+firewall_protocol: tcp
+
+# Defaults for chocolatey tasks
+
+chocolatey_package_name: 'notepadplusplus'
+chocolatey_package_state: 'present'
+
+# Defaults for msi tasks
+
+msi_feature_name: 'Web-Server'
