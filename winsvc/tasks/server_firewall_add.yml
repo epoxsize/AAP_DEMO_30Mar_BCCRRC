@@ -1,4 +1,4 @@
-- name: Firewall rule to allow SMTP on TCP port 25
+- name: Firewall rule to allow  firewall rules
   win_firewall_rule:
     name: "{{firewall_rule_name}}"
     localport: "{{firewall_port}}"
