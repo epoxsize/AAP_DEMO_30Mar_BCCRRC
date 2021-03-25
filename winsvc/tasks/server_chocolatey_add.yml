@@ -1,0 +1,4 @@
+- name: Install Chocolatey package
+  win_chocolatey:
+    name: "{{chocolatey_package_name}}"
+    state: "{{chocolatey_package_state}}"
