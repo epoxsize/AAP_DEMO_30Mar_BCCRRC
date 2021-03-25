@@ -1,7 +1,7 @@
 - name: Adding hosts to the domain
   win_domain_membership:
     dns_domain_name: "{{domain_dns_name}}"
-#    hostname: "{{inventory_hostname}}"
+    hostname: "{{ lookup('password', '/dev/null chars=ascii_lowercase length=6') }}"
     domain_admin_user: "{{domain_ad_user}}"
     domain_admin_password: "{{domain_ad_password}}"
     state: domain
