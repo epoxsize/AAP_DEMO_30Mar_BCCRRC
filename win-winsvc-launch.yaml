@@ -1,5 +1,5 @@
 ---
 - name: Basic runner of winsvc role 
-  hosts: wingroup
+  hosts: all
   roles:
     - role: winsvc
