@@ -23,7 +23,9 @@ domain_ad_password: 'P@ssw0rd'
 # Defaults for firewall tasks
 
 firewall_rule_name: default_company_rule
-firewall_port: 3128
+firewall_port: 
+ - 3128
+ - 112
 firewall_action: allow
 firewall_direction: in
 firewall_protocol: tcp
