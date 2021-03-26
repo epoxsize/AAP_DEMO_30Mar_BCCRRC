@@ -5,3 +5,7 @@
     domain_admin_user: "{{domain_ad_user}}"
     domain_admin_password: "{{domain_ad_password}}"
     state: domain
+
+- name: Reboot servers to apply changes
+  win_reboot:
+  when: var_prep_ad_reboot|bool == True
