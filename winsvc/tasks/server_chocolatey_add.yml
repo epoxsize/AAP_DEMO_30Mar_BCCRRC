@@ -1,4 +1,4 @@
-- name: Install Chocolatey package
+- name: Install package with chocolatey
   win_chocolatey:
     name: "{{chocolatey_package_name}}"
     state: "{{chocolatey_package_state}}"
