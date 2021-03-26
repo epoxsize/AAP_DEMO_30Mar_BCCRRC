@@ -1,6 +1,11 @@
 - name: Change the hostname to the ansible inventory hostname - generate random
   win_hostname:
     name: "{{ lookup('password', '/dev/null chars=ascii_lowercase length=6') }}"
+  when: var_prep_hosname_rn|bool == True
+
+- name: Reboot servers to apply changes
+  win_reboot:
+  when: var_prep_hosname_reboot|bool == True
 
 - name: Setting up DNS client to work with our local DC
   win_dns_client:
