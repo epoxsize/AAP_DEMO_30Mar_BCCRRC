@@ -1,4 +1,4 @@
-- name: Install IIS
+- name: Installing Windows Feature 
   win_feature:
     name: "{{msi_feature_name}}"
     state: "{{msi_feature_status}}"
