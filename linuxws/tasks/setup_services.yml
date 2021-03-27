@@ -1,0 +1,5 @@
+---
+- ansible.builtin.service:
+    name: "{{ item }}"
+    state: "{{ (ws_config.services[item])|ternary('started','stopped') }}"
+  loop: "{{ ws_config.services.keys() }}"

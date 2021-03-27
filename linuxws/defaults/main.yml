@@ -4,8 +4,9 @@
 #Include conditions
 prep_basic: yes
 ad_add: yes
-setup_firewall: yes
 setup_packages: yes
+setup_services: yes
+setup_firewall: yes
 
 # Defaults for domain tasks
 basic_dns_address: '172.17.197.6'
@@ -22,13 +23,17 @@ General_config:
     sshd: yes
   firewall-services:
     sshd: yes
-  if_name_template: enp
 
 RedHat_config:
   packages:
-    vim-common: yes
+    tmux: yes
   services:
     cockpit: yes
+  firewall-services:
+    sshd: yes
 
 Suse_config:
-  if_name_template: eth
+  packages:
+    git: yes
+  firewall-services:
+    sshd: yes

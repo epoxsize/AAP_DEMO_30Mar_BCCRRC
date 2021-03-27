@@ -1,0 +1,5 @@
+---
+- ansible.builtin.package:
+    name: "{{ item }}"
+    state: "{{ (ws_config.packages[item])|ternary('present','absent') }}"
+  loop: "{{ ws_config.packages.keys() }}"

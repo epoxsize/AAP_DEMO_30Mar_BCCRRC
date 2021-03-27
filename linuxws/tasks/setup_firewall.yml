@@ -1,0 +1,8 @@
+---
+- firewalld:
+    service: "{{ item }}"
+    # zone: public
+    permanent: yes
+    immediate: yes
+    state: "{{ (ws_config['firewall-services'][item])|ternary('enabled','disabled') }}"
+  loop: "{{ ws_config['firewall-services'].keys() }}"

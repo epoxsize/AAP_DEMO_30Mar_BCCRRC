@@ -8,3 +8,15 @@
 - name:  Basic linux preparation
   import_tasks: prep_basic.yml
   when: prep_basic|bool == True
+
+- name: Setup packages
+  import_tasks: setup_packages.yml
+  when: setup_packages|bool == True
+
+- name: Setup services
+  import_tasks: setup_services.yml
+  when: setup_services|bool == True
+
+- name: Setup firewall
+  import_tasks: setup_firewall.yml
+  when: setup_firewall|bool == True

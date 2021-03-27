@@ -12,12 +12,10 @@
 - name: Get connection
   shell: >
     nmcli device show {{ eth_dev }}|grep CONNECTION|awk -F ':' '{print($2)}'|xargs
-  register: con_res
 
-- name: Modify connections dns and deliver from auto-dns recieval
+- name: Modify connections dns and deliver from auto-dns receival
   shell: >
     nmcli con modify '{{ con_res.stdout }}' ipv4.ignore-auto-dns yes ipv4.dns {{ basic_dns_address }}
-  register: mod_res
   notify:
   - Restart NetworkManager
 
