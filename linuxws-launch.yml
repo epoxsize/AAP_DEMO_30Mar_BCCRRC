@@ -1,0 +1,8 @@
+---
+- name: Configure workstations with linuxws role
+  hosts: all
+  become: true
+
+  roles:
+  - role: linuxws
+    state: present

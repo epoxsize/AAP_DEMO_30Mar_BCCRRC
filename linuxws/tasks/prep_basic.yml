@@ -1,0 +1,25 @@
+
+- name: Set a hostname
+  ansible.builtin.hostname:
+    name: "{{ ws_fqdn }}"
+
+- name: Get device
+  set_fact:
+    eth_dev: "{{ item }}"
+  when: hostvars[inventory_hostname]['ansible_' + item]['type'] is defined and hostvars[inventory_hostname]['ansible_' + item]['type'] == 'ether'
+  loop: "{{ hostvars[inventory_hostname]['ansible_interfaces'] }}"
+
+- name: Get connection
+  shell: >
+    nmcli device show {{ eth_dev }}|grep CONNECTION|awk -F ':' '{print($2)}'|xargs
+  register: con_res
+
+- name: Modify connections dns and deliver from auto-dns recieval
+  shell: >
+    nmcli con modify '{{ con_res.stdout }}' ipv4.ignore-auto-dns yes ipv4.dns {{ basic_dns_address }}
+  register: mod_res
+  notify:
+  - Restart NetworkManager
+
+
+

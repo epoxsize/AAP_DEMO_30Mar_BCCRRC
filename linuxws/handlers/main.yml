@@ -1,0 +1,11 @@
+---
+# handlers file for linuxws
+- name: Reload NetworkManager
+  service:
+    name: NetworkManager
+    state: reloaded
+
+- name: Restart NetworkManager
+  service:
+    name: NetworkManager
+    state: restarted

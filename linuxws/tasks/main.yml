@@ -1,0 +1,10 @@
+---
+# tasks file for linuxws
+- name: Prepare facts
+  set_fact:
+    ws_config: "{{ General_config|combine((ansible_facts.os_family is defined)|ternary((vars[ansible_facts.os_family ~ '_config'] is defined)|ternary(vars[ansible_facts.os_family ~ '_config'], {}),{}), recursive=True) }}"
+    ws_fqdn: "{{ ansible_facts.os_family|default('demo')|lower ~ '-ws' ~ play_hosts.index(inventory_hostname) ~ '.' ~ domain_name }}"
+
+- name:  Basic linux preparation
+  import_tasks: prep_basic.yml
+  when: prep_basic|bool == True
