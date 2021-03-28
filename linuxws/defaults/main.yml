@@ -14,26 +14,25 @@ domain_name: 'edu.inno.lab'
 domain_ad_user: 'Administrator'
 domain_ad_password: 'P@ssw0rd'
 
-# Defaults for ws config
-General_config:
-  packages:
-    nfs-utils: yes
-    cifs-utils: yes
-  services:
-    sshd: yes
-  firewall-services:
-    sshd: yes
+# General and distro specific packages
+packages:
+  - nfs-utils
+  - cifs-utils
+RedHat_packages:
+  - tmux
+  - podman
+Suse_packages:
+  - git
+  - docker
 
-RedHat_config:
-  packages:
-    tmux: yes
-  services:
-    cockpit: yes
-  firewall-services:
-    sshd: yes
+# General and distro specific services
+services:
+  - sshd
+RedHat_services:
+  - cockpit
 
-Suse_config:
-  packages:
-    git: yes
-  firewall-services:
-    sshd: yes
+# General and distro specific firewall rules
+fwallrules:
+  - ssh
+RedHat_fwallrules:
+  - cockpit

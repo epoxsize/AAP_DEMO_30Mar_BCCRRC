@@ -2,8 +2,16 @@
 # tasks file for linuxws
 - name: Prepare facts
   set_fact:
-    ws_config: "{{ General_config|combine((ansible_facts.os_family is defined)|ternary((vars[ansible_facts.os_family ~ '_config'] is defined)|ternary(vars[ansible_facts.os_family ~ '_config'], {}),{}), recursive=True) }}"
+    ws_packages: "{{ packages|union((ansible_facts.os_family is defined)|ternary((vars[ansible_facts.os_family ~ '_packages'] is defined)|ternary(vars[ansible_facts.os_family ~ '_packages'], []),[])) }}"
+    ws_services: "{{ services|union((ansible_facts.os_family is defined)|ternary((vars[ansible_facts.os_family ~ '_services'] is defined)|ternary(vars[ansible_facts.os_family ~ '_services'], []),[])) }}"
+    ws_fwallrules: "{{ fwallrules|union((ansible_facts.os_family is defined)|ternary((vars[ansible_facts.os_family ~ '_fwallrules'] is defined)|ternary(vars[ansible_facts.os_family ~ '_fwallrules'], []),[])) }}"
     ws_fqdn: "{{ ansible_facts.os_family|default('demo')|lower ~ '-ws' ~ play_hosts.index(inventory_hostname) ~ '.' ~ domain_name }}"
+
+# - debug:
+#     msg:
+#       - "{{ ws_packages }}"
+#       - "{{ ws_services }}"
+#       - "{{ ws_fwallrules }}"
 
 - name:  Basic linux preparation
   import_tasks: prep_basic.yml

@@ -12,6 +12,7 @@
 - name: Get connection
   shell: >
     nmcli device show {{ eth_dev }}|grep CONNECTION|awk -F ':' '{print($2)}'|xargs
+  register: con_res
 
 - name: Modify connections dns and deliver from auto-dns receival
   shell: >
