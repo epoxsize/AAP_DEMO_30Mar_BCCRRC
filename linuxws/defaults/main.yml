@@ -2,11 +2,11 @@
 # defaults file for linuxws
 
 #Include conditions
-prep_basic: yes
-ad_add: yes
-setup_packages: yes
-setup_services: yes
-setup_firewall: yes
+prep_basic: no
+ad_add: no
+setup_packages: no
+setup_services: no
+setup_firewall: no
 
 # Defaults for domain tasks
 basic_dns_address: '172.17.197.6'
